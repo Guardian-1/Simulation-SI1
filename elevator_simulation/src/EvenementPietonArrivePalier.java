@@ -1,16 +1,16 @@
 public class EvenementPietonArrivePalier extends Evenement {
     /* PAP: Pieton Arrive Palier
-       L'instant precis ou un passager qui à decide de continuer à pieds arrive sur un palier donne.
+       L'instant précis ou un passager qui à décidé de continuer à pieds arrive sur un palier donné.
     */
 
-    private Etage etage;
+    private Etage étage;
     private Passager passager;
 
     public void afficheDetails(StringBuilder buffer, Immeuble immeuble) {
       buffer.append("PAP ");
-      buffer.append(etage.numero());
+      buffer.append(étage.numéro());
       buffer.append(" #");
-      buffer.append(passager.numeroDeCreation);
+      buffer.append(passager.numéroDeCréation);
     }
     
     
@@ -20,7 +20,7 @@ public class EvenementPietonArrivePalier extends Evenement {
 
     public EvenementPietonArrivePalier(long d, Etage edd, Passager pa) {
 	super(d);
-	etage = edd;
+	étage = edd;
 	passager = pa;
     }
     

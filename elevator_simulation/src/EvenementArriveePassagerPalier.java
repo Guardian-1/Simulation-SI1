@@ -1,48 +1,50 @@
 public class EvenementArriveePassagerPalier extends Evenement {
-	/* APP: Arrivee Passager Palier
-       L'instant precis ou un nouveau passager arrive sur un palier donne, dans le but
+    /* APP: Arrivée Passager Palier
+       L'instant précis ou un nouveau passager arrive sur un palier donné, dans le but
        de monter dans la cabine.
-	 */
+    */
+    
+    private Etage étage;
 
-	private Etage etage;
+    public EvenementArriveePassagerPalier(long d, Etage edd) {
+	super(d);
+	étage = edd;
+    }
 
-	public EvenementArriveePassagerPalier(long d, Etage edd) {
-		super(d);
-		etage = edd;
-	}
+    public void afficheDetails(StringBuilder buffer, Immeuble immeuble) {
+	buffer.append("APP ");
+	buffer.append(étage.numéro());
+    }
 
-	public void afficheDetails(StringBuilder buffer, Immeuble immeuble) {
-		buffer.append("APP ");
-		buffer.append(etage.numero());
-	}
+    public void traiter(Immeuble immeuble, Echeancier echeancier) {
+	assert étage != null;
+	assert immeuble.étage(étage.numéro()) == étage;
+	Passager p = new Passager(date, étage, immeuble);
+	Cabine c = immeuble.cabine;
 
-	public void traiter(Immeuble immeuble, Echeancier echeancier) {
-		assert etage != null;
-		assert immeuble.etage(etage.numero()) == etage;
-		Passager passager = new Passager(date, etage, immeuble);
-		Cabine cabine = immeuble.cabine;
-
-		if (cabine.porteOuverte && cabine.etage == etage) {
-			if (cabine.intention() == '-') {
-
-				cabine.changerIntention(passager.sens());
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes)); 
-				char fmp = cabine.faireMonterPassager(passager);
-				// Faudrait aussi ajouter le premier PCP...
-				if (fmp == 'O') {
-					assert true;
-				} else {
-					assert false : "else impossible";
-				};	
-			} else  if (cabine.intention() == '^'){
-				etageSuivant = immeuble.etage(cabine.etage.numero()+1);
-				assert etageSuivant.numero() == cabine.etage.numero() + 1;
-			};
+	notYetImplemented();
+	/* 
+	if (c.porteOuverte && c.étage == étage) {
+	    if (c.intention() == '-') {
+		//notYetImplemented();
+		c.changerIntention(p.sens());
+		echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes)); 
+		char fmp = c.faireMonterPassager(p);
+		// Faudrait aussi ajouter le premier PCP...
+		if (fmp == 'O') {
+		    assert true;
 		} else {
-			notYetImplemented();
-		};
+		    assert false : "else impossible";
+		};	
+	    } else {
+		notYetImplemented();
+	    };
+	} else {
+	    notYetImplemented();
+	};
+	//*/
 
-		assert cabine.intention() != '-' : "intention impossible";
-	}
+	assert c.intention() != '-' : "intention impossible";
+    }
 
 }
