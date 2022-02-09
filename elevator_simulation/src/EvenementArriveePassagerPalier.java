@@ -22,28 +22,28 @@ public class EvenementArriveePassagerPalier extends Evenement {
 	Passager p = new Passager(date, étage, immeuble);
 	Cabine c = immeuble.cabine;
 
-	notYetImplemented();
-	/* 
+
 	if (c.porteOuverte && c.étage == étage) {
 	    if (c.intention() == '-') {
-		//notYetImplemented();
 		c.changerIntention(p.sens());
 		echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes)); 
 		char fmp = c.faireMonterPassager(p);
-		// Faudrait aussi ajouter le premier PCP...
 		if (fmp == 'O') {
 		    assert true;
 		} else {
 		    assert false : "else impossible";
 		};	
 	    } else {
-		notYetImplemented();
-	    };
-	} else {
-	    notYetImplemented();
-	};
-	//*/
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.étageDestination()));
 
+		};
+	} else {
+		if (c.porteOuverte){
+			echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+		}
+	}
+	date+=étage.arrivéeSuivante();
+	echeancier.ajouter(this);
 	assert c.intention() != '-' : "intention impossible";
     }
 
