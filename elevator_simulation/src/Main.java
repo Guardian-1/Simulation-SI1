@@ -44,7 +44,7 @@ public class Main extends Global {
             evenement.traiter(immeuble, echeancier);
             nbPasSimul++;
         }
-        System.out.println("Echeancier vide. Arrêt.");
+        System.out.println("Echeancier vide. ArrÃªt.");
     }
 
     private static long memoDate = -1;

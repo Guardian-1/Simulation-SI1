@@ -3,7 +3,7 @@ public class Cabine extends Global {
        pouvez pas ajouter des attributs (variables d'instance).
     */
     
-    public Etage etage; // actuel, la  ou se trouve la Cabine, jamais null.
+    public Etage etage; // actuel, lÃ  ou se trouve la Cabine, jamais null.
 
     public boolean porteOuverte;
 
@@ -38,7 +38,7 @@ public class Cabine extends Global {
     }
 
     /* Pour savoir si le passager p est bien dans la Cabine.
-       Attention, c'est assez lent et c'est pluta´t une methode destinee a  aªtre 
+       Attention, c'est assez lent et c'est plutÃ´t une methode destinee Ã  Ãªtre 
        utilisee dans les asserts.
     */
     public boolean transporte(Passager p) {
