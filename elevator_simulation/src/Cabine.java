@@ -1,23 +1,23 @@
 public class Cabine extends Global {
-    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les methodes, mais vous ne
+    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les méthodes, mais vous ne
        pouvez pas ajouter des attributs (variables d'instance).
     */
     
-    public Etage etage; // actuel, là ou se trouve la Cabine, jamais null.
+    public Etage étage; // actuel, là ou se trouve la Cabine, jamais null.
 
     public boolean porteOuverte;
 
     private char intention; // '-' ou 'v' ou '^'
 
     private Passager[] tableauPassager;
-    /* Ceux qui sont actuellement dans la Cabine. On ne decale jamais les elements.
+    /* Ceux qui sont actuellement dans la Cabine. On ne décale jamais les élements.
        Comme toute les collections, il ne faut pas l'exporter.
        Quand on cherche une place libre, on fait le parcours de la gauche vers la droite.
      */
 
     public Cabine(Etage e) {
 	assert e != null;
-	etage = e;
+	étage = e;
 	tableauPassager = new Passager[nombreDePlacesDansLaCabine];
 	porteOuverte = true;
 	intention = '-';
@@ -38,8 +38,8 @@ public class Cabine extends Global {
     }
 
     /* Pour savoir si le passager p est bien dans la Cabine.
-       Attention, c'est assez lent et c'est plutôt une methode destinee à être 
-       utilisee dans les asserts.
+       Attention, c'est assez lent et c'est plutôt une méthode destinée à être 
+       utilisée dans les asserts.
     */
     public boolean transporte(Passager p) {
 	assert p != null;
@@ -85,8 +85,8 @@ public class Cabine extends Global {
 	    Passager p = tableauPassager[i];
 	    if(p != null){
 		assert transporte(p);
-		if(p.etageDestination() == etage){
-		    immeuble.ajouterCumul(d-p.dateDepart());
+		if(p.étageDestination() == étage){
+		    immeuble.ajouterCumul(d-p.dateDépart());
 		    immeuble.nombreTotalDesPassagersSortis++;
 		    tableauPassager[i]=null; 
 		    c++;
@@ -103,7 +103,7 @@ public class Cabine extends Global {
 	    Passager p = tableauPassager[i];
 	    if(p!=null){
 		assert transporte(p);
-		if(p.etageDestination() == etage){
+		if(p.étageDestination() == étage){
 		    return true;
 		}
 	    }

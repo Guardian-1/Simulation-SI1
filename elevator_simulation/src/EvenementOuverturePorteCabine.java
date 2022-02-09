@@ -1,6 +1,6 @@
 public class EvenementOuverturePorteCabine extends Evenement {
     /* OPC: Ouverture Porte Cabine
-       L'instant precis ou la porte termine de s'ouvrir.
+       L'instant précis ou la porte termine de s'ouvrir.
     */
     
     public EvenementOuverturePorteCabine(long d) {
@@ -13,7 +13,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
     
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
-	Etage etage = cabine.etage;
+	Etage étage = cabine.étage;
 	assert ! cabine.porteOuverte;
 	
 	notYetImplemented();

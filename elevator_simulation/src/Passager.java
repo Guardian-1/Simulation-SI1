@@ -1,52 +1,52 @@
 public class Passager {
-    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger des methodes, mais vous ne
+    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger des méthodes, mais vous ne
        pouvez pas ajouter des attributs (variables d'instance).
        Quand vous serez en mode recherche de vitesse, vous pourrez tout faire, ici et ailleurs.
     */
     
-    public long numeroDeCreation;
+    public long numéroDeCréation;
 
-    private long dateDepart;
+    private long dateDépart;
 
-    private Etage etageDepart;
+    private Etage étageDépart;
 
-    private Etage etageDestination;
+    private Etage étageDestination;
 
-    public long dateDepart() {
-	return this.dateDepart;
+    public long dateDépart() {
+	return this.dateDépart;
     }
 
-    public Etage etageDepart() {
-	return this.etageDepart;
+    public Etage étageDépart() {
+	return this.étageDépart;
     }
 
-    public int numeroDepart() {
-	return this.etageDepart.numero();
+    public int numéroDepart() {
+	return this.étageDépart.numéro();
     }
 
-    public Etage etageDestination() {
-	return this.etageDestination;
+    public Etage étageDestination() {
+	return this.étageDestination;
     }
 
-    public int numeroDestination() {
-	return this.etageDestination.numero();
+    public int numéroDestination() {
+	return this.étageDestination.numéro();
     }
 
     public Passager(long dateDeDepart, Etage etageDeDepart, Immeuble immeuble) {
 	Etage niveauDuSol = immeuble.niveauDuSol();
 	int nbEtages = immeuble.nbEtages();
-	etageDepart = etageDeDepart;
-	dateDepart = dateDeDepart;
+	étageDépart = etageDeDepart;
+	dateDépart = dateDeDepart;
 	compteurGlobalDeCreationDesPassagers++;
-	numeroDeCreation = compteurGlobalDeCreationDesPassagers;
-	if (etageDepart == niveauDuSol) {
-	    etageDestination = niveauDuSol;
-	    while (etageDestination == niveauDuSol) {
+	numéroDeCréation = compteurGlobalDeCreationDesPassagers;
+	if (étageDépart == niveauDuSol) {
+	    étageDestination = niveauDuSol;
+	    while (étageDestination == niveauDuSol) {
 		int auPif = randomGenerator.intSuivant(nbEtages);
-		etageDestination = immeuble.etage(auPif + immeuble.etageLePlusBas().numero() - 1);
+		étageDestination = immeuble.étage(auPif + immeuble.étageLePlusBas().numéro() - 1);
 	    }
 	} else {
-	    etageDestination = niveauDuSol;
+	    étageDestination = niveauDuSol;
 	}
     }
 
@@ -55,20 +55,20 @@ public class Passager {
     private static final PressRandomNumberGenerator randomGenerator = new PressRandomNumberGenerator(34);
 
     public char sens () {
-	return (etageDestination.numero() > etageDepart.numero() ? '^' : 'v');
+	return (étageDestination.numéro() > étageDépart.numéro() ? '^' : 'v');
     }
 
     public void afficheDans(StringBuilder buffer) {
-	int depa = etageDepart.numero();
-	int dest = etageDestination.numero();
+	int depa = étageDépart.numéro();
+	int dest = étageDestination.numéro();
 	buffer.append('#');
-	buffer.append(numeroDeCreation);
+	buffer.append(numéroDeCréation);
 	buffer.append(':');
 	buffer.append(depa);
 	buffer.append(dest > depa ? '^' : 'v');
 	buffer.append(dest);
 	buffer.append(':');
-	buffer.append(dateDepart);
+	buffer.append(dateDépart);
     }
     
 }
