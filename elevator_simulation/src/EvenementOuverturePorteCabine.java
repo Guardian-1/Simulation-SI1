@@ -13,7 +13,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
     
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
-	Etage étage = cabine.étage;
+	Etage etage = cabine.etage;
 	assert ! cabine.porteOuverte;
 	
 	notYetImplemented();

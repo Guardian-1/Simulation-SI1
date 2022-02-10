@@ -5,8 +5,8 @@ public class Etage extends Global {
        pouvez pas ajouter des attributs (variables d'instance).
     */
     
-    private int numéro;
-    /* Le numéro de l'Etage du point de vue de l'usager (et non pas l'index correspondant
+    private int numero;
+    /* Le numero de l'Etage du point de vue de l'usager (et non pas l'index correspondant
        dans le tableau.
     */
 
@@ -30,7 +30,7 @@ public class Etage extends Global {
     */
 
     public Etage(int n, int fa, Immeuble im) {
-	numéro = n;
+	numero = n;
 	immeuble = im;
 	int germe = n << 2;
 	if (germe <= 0) {
@@ -40,11 +40,11 @@ public class Etage extends Global {
     }
 
     public void afficheDans(StringBuilder buffer) {
-	if (numéro() >= 0) {
+	if (numero() >= 0) {
 	    buffer.append(' ');
 	}
-	buffer.append(numéro());
-	if (this == immeuble.cabine.étage) {
+	buffer.append(numero());
+	if (this == immeuble.cabine.etage) {
 	    buffer.append(" C ");
 	    if (immeuble.cabine.porteOuverte) {
 		buffer.append("[  ]: ");
@@ -83,8 +83,8 @@ public class Etage extends Global {
 	}
     }
 
-    public int numéro() {
-	return this.numéro;
+    public int numero() {
+	return this.numero;
     }
 
     public void ajouter(Passager passager) {
@@ -92,7 +92,7 @@ public class Etage extends Global {
 	passagers.add(passager);
     }
 
-    public long arrivéeSuivante() {
+    public long arriveeSuivante() {
 	return poissonFrequenceArrivee.suivant();
     }
 
