@@ -14,7 +14,11 @@ public class Etage extends Global {
     /* Back-pointer vers l'immeuble correspondant.
      */
 
-    private LoiDePoisson poissonFrequenceArrivee;
+	public Immeuble getImmeuble() {
+		return immeuble;
+	}
+
+	private LoiDePoisson poissonFrequenceArrivee;
     /* Pour cet étage.
      */
 
