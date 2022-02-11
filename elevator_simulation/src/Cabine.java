@@ -114,10 +114,10 @@ public class Cabine extends Global {
 
 	public void changerEtage (Echeancier echeancier, long date){
 		if(this.intention() == '^'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero())));
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()+1)));
 
 		}else if(this.intention() == 'v'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero())));
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()-1)));
 
 		}
 	}
