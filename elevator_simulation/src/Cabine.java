@@ -112,9 +112,7 @@ public class Cabine extends Global {
 	return false;
     }
 
-	public void changerEtage (Immeuble immeuble, Echeancier echeancier, long date){
-		int num = etage.numero();
-
+	public void changerEtage (Echeancier echeancier, long date){
 		if(this.intention() == '^'){
 			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()+1)));
 
