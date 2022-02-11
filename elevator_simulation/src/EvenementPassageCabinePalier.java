@@ -19,7 +19,6 @@ public class EvenementPassageCabinePalier extends Evenement {
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
 	assert ! cabine.porteOuverte;
-	assert etage.numero() != cabine.etage.numero();
 
 	cabine.changerEtage(immeuble,echeancier,date);
 

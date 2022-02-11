@@ -114,8 +114,7 @@ public class Cabine extends Global {
 
 	public void changerEtage (Immeuble immeuble, Echeancier echeancier, long date){
 		Cabine cabine = immeuble.cabine;
-		//assert ! cabine.porteOuverte;
-		//assert etage.numero() != cabine.etage.numero();
+		assert etage.numero() != cabine.etage.numero();
 		cabine.etage = etage;
 		int num = cabine.etage.numero();
 
