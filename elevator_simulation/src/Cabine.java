@@ -114,14 +114,15 @@ public class Cabine extends Global {
 
 	public void changerEtage (Immeuble immeuble, Echeancier echeancier, long date){
 		Cabine cabine = immeuble.cabine;
-		assert etage.numero() != cabine.etage.numero();
 		cabine.etage = etage;
 		int num = cabine.etage.numero();
 
 		if(this.intention() == '^'){
 			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num+1)));
+			this.etage= immeuble.etage(num+1);
 		}else if(this.intention() == 'v'){
 			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num-1)));
+			this.etage= immeuble.etage(num+1);
 		}
 	}
 }
