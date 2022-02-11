@@ -116,10 +116,10 @@ public class Cabine extends Global {
 		int num = etage.numero();
 
 		if(this.intention() == '^'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num+1)));
-			//this.etage= immeuble.etage(num+1);
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()+1)));
+			//this.etage= immeuble.etage(num+1); this.étage.immeuble.étage(this.étage.numéro()+1)
 		}else if(this.intention() == 'v'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num-1)));
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,  this.etage.getImmeuble().etage(this.etage.numero()-1)));
 			//this.etage= immeuble.etage(num+1);
 		}
 	}
