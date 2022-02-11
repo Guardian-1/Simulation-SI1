@@ -10,8 +10,8 @@ public abstract class Evenement extends Global {
         date = d;
     }
 
-    public static long getDate() {
-        return date;
+    public long getDate() {
+        return this.date;
     }
 
     public abstract void traiter(Immeuble immeuble, Echeancier echeancier);

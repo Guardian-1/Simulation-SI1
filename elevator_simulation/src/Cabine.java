@@ -112,7 +112,7 @@ public class Cabine extends Global {
 	return false;
     }
 
-	public void changerEtage (Immeuble immeuble, Echeancier echeancier){
+	public void changerEtage (Immeuble immeuble, Echeancier echeancier, long date){
 		Cabine cabine = immeuble.cabine;
 		assert ! cabine.porteOuverte;
 		assert etage.numero() != cabine.etage.numero();
@@ -120,9 +120,9 @@ public class Cabine extends Global {
 		int num = cabine.etage.numero();
 
 		if(this.intention() == '^'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(Evenement.getDate() + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num+1)));
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num+1)));
 		}else if(this.intention() == 'v'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(Evenement.getDate() + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num-1)));
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num-1)));
 		}
 	}
 }
