@@ -17,17 +17,13 @@ public class EvenementFermeturePorteCabine extends Evenement {
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
 	assert cabine.porteOuverte : "précondition";
-    Etage e = cabine.etage;
+    //Etage e = cabine.etage;
 
     cabine.porteOuverte = false;
 
-    int etageNum = cabine.etage.numero();
+    //int etageNum = cabine.etage.numero();
 
-    if(cabine.intention() == '^'){
-        echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum+1)));
-    }else if(cabine.intention() == 'v'){
-        echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum-1)));
-    }
+    cabine.changerEtage(echeancier,date);
 
     assert (! cabine.porteOuverte) : "postcondition";
 
