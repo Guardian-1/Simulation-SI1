@@ -3,7 +3,7 @@ public class Cabine extends Global {
        pouvez pas ajouter des attributs (variables d'instance).
     */
     
-    public Etage étage; // actuel, là ou se trouve la Cabine, jamais null.
+    public Etage etage; // actuel, là ou se trouve la Cabine, jamais null.
 
     public boolean porteOuverte;
 
@@ -17,7 +17,7 @@ public class Cabine extends Global {
 
     public Cabine(Etage e) {
 	assert e != null;
-	étage = e;
+	etage = e;
 	tableauPassager = new Passager[nombreDePlacesDansLaCabine];
 	porteOuverte = true;
 	intention = '-';
@@ -85,8 +85,8 @@ public class Cabine extends Global {
 	    Passager p = tableauPassager[i];
 	    if(p != null){
 		assert transporte(p);
-		if(p.étageDestination() == étage){
-		    immeuble.ajouterCumul(d-p.dateDépart());
+		if(p.etageDestination() == etage){
+		    immeuble.ajouterCumul(d-p.dateDepart());
 		    immeuble.nombreTotalDesPassagersSortis++;
 		    tableauPassager[i]=null; 
 		    c++;
@@ -103,7 +103,7 @@ public class Cabine extends Global {
 	    Passager p = tableauPassager[i];
 	    if(p!=null){
 		assert transporte(p);
-		if(p.étageDestination() == étage){
+		if(p.etageDestination() == etage){
 		    return true;
 		}
 	    }

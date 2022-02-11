@@ -19,7 +19,7 @@
 *.tar.gz
 *.rar
 
-/IO/
+/src/IO/
 /bin/
 .project
 .classpath
