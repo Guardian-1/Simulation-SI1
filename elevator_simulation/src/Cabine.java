@@ -112,4 +112,17 @@ public class Cabine extends Global {
 	return false;
     }
 
+	public void changerEtage (Immeuble immeuble, Echeancier echeancier){
+		Cabine cabine = immeuble.cabine;
+		assert ! cabine.porteOuverte;
+		assert etage.numero() != cabine.etage.numero();
+		cabine.etage = etage;
+		int num = cabine.etage.numero();
+
+		if(this.intention() == '^'){
+			echeancier.ajouter(new EvenementPassageCabinePalier(Evenement.getDate() + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num+1)));
+		}else if(this.intention() == 'v'){
+			echeancier.ajouter(new EvenementPassageCabinePalier(Evenement.getDate() + tempsPourBougerLaCabineDUnEtage, immeuble.etage(num-1)));
+		}
+	}
 }

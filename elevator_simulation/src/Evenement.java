@@ -9,7 +9,11 @@ public abstract class Evenement extends Global {
 	assert d >= 0;
         date = d;
     }
-    
+
+    public static long getDate() {
+        return date;
+    }
+
     public abstract void traiter(Immeuble immeuble, Echeancier echeancier);
     
     public void affiche(StringBuilder buffer, Immeuble immeuble) {
