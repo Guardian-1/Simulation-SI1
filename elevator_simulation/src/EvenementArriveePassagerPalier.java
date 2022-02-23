@@ -34,12 +34,12 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		    assert false : "else impossible";
 		};	
 	    } else {
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
-			c.changerEtage(echeancier,date);
+			//echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
+			//c.changerEtage(echeancier,date);
 		};
 	} else {
 		//if (!c.porteOuverte && c.etage == etage){
-		//	echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+		echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 		//}
 	}
 	date+=etage.arriveeSuivante();
