@@ -112,14 +112,15 @@ public class Cabine extends Global {
 	return false;
     }
 
-	public void changerEtage (Echeancier echeancier, long date){
-		if(this.intention() == '^'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()+1)));
-		}else if(this.intention() == 'v'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()-1)));
+	public void changerEtage (Echeancier echeancier, long date, Immeuble immeuble){
+		int etageNum = this.etage.numero();
+		if (this.intention() =='-'){
+			echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		}
-//		else if (this.intention() == '-') {
-//			echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
-//		}
+		if(this.intention() == '^'){
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum+1)));
+		}else if(this.intention() == 'v'){
+			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum-1)));
+		}
 	}
 }

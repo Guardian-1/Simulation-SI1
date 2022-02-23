@@ -20,18 +20,6 @@ public class EvenementPassageCabinePalier extends Evenement {
 	Cabine cabine = immeuble.cabine;
 	assert ! cabine.porteOuverte;
 	assert etage.numero() != cabine.etage.numero();
-		cabine.etage = etage;
-
-		int etageNum = cabine.etage.numero();
-		if (cabine.intention() =='-'){
-			echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
-		}
-		if(cabine.intention() == '^'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum+1)));
-		}else if(cabine.intention() == 'v'){
-			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, immeuble.etage(etageNum-1)));
-		}
-	//cabine.changerEtage(echeancier,date);
-
+	cabine.changerEtage(echeancier, date, immeuble);
     }
 }
