@@ -25,14 +25,14 @@ public class EvenementArriveePassagerPalier extends Evenement {
 
 	if (c.porteOuverte && c.etage == etage) {
 	    if (c.intention() == '-') {
-//		c.changerIntention(p.sens());
+		c.changerIntention(p.sens());
 //		echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes)); 
-//		char fmp = c.faireMonterPassager(p);
-//		if (fmp == 'O') {
-//		    assert true;
-//		} else {
-//		    assert false : "else impossible";
-//		};	
+		char fmp = c.faireMonterPassager(p);
+		if (fmp == 'O') {
+		    assert true;
+		} else {
+		    assert false : "else impossible";
+		};	
 	    //} else {
 			//echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
 
