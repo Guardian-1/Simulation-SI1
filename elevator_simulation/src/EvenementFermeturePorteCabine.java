@@ -23,7 +23,7 @@ public class EvenementFermeturePorteCabine extends Evenement {
 
     //int etageNum = cabine.etage.numero();
 
-
+    cabine.changerEtage(echeancier,date, immeuble);
 
     assert (! cabine.porteOuverte) : "postcondition";
 
