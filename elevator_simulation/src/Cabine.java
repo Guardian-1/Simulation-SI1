@@ -121,4 +121,11 @@ public class Cabine extends Global {
 
 		}
 	}
+
+	public Boolean doitSarreter (Echeancier echeancier, long date){
+		if(this.intention()=='-'){
+			return true;
+		}
+		else return false;
+	}
 }
