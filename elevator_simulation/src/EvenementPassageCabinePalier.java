@@ -24,7 +24,6 @@ public class EvenementPassageCabinePalier extends Evenement {
 
 		int etageNum = cabine.etage.numero();
 		if (etage == cabine.etage){
-			cabine.changerIntention('-');
 			echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		}
 		if(cabine.intention() == '^'){
