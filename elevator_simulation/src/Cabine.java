@@ -1,16 +1,16 @@
 public class Cabine extends Global {
-    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les méthodes, mais vous ne
+    /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les mÃ©thodes, mais vous ne
        pouvez pas ajouter des attributs (variables d'instance).
     */
     
-    public Etage etage; // actuel, là ou se trouve la Cabine, jamais null.
+    public Etage etage; // actuel, lÃ  ou se trouve la Cabine, jamais null.
 
     public boolean porteOuverte;
 
     private char intention; // '-' ou 'v' ou '^'
 
     private Passager[] tableauPassager;
-    /* Ceux qui sont actuellement dans la Cabine. On ne décale jamais les élements.
+    /* Ceux qui sont actuellement dans la Cabine. On ne dÃ©cale jamais les Ã©lements.
        Comme toute les collections, il ne faut pas l'exporter.
        Quand on cherche une place libre, on fait le parcours de la gauche vers la droite.
      */
@@ -38,8 +38,8 @@ public class Cabine extends Global {
     }
 
     /* Pour savoir si le passager p est bien dans la Cabine.
-       Attention, c'est assez lent et c'est plutôt une méthode destinée à être 
-       utilisée dans les asserts.
+       Attention, c'est assez lent et c'est plutÃ´t une mÃ©thode destinÃ©e Ã  Ãªtre 
+       utilisÃ©e dans les asserts.
     */
     public boolean transporte(Passager p) {
 	assert p != null;
