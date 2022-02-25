@@ -32,7 +32,8 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		} else {
 		    assert false : "else impossible";
 		};	
-	    //} else {
+	    } else {
+			c.changerIntention(p.sens());
 			//echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
 
 		};
