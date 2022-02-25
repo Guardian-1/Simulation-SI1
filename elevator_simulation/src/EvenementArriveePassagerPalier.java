@@ -44,7 +44,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		}
 		if (c.etage != etage)
 			c.changerIntention(p.sens());
-		System.out.println(p.sens()+p.etageDestination().numero()+p.etageDepart().numero());
+		System.out.println(p.sens()+","+p.etageDestination().numero()+","+p.etageDepart().numero());
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 			echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
