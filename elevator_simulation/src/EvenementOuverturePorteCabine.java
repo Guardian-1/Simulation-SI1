@@ -14,9 +14,9 @@ public class EvenementOuverturePorteCabine extends Evenement {
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
 	Etage etage = cabine.etage;
-		Passager p = new Passager(date, etage, immeuble);
+
 	assert ! cabine.porteOuverte;
-		cabine.changerIntention(p.sens());
+	cabine.changerIntention('-');
 	cabine.faireDescendrePassagers(immeuble,date);
 	cabine.ouvrirPorte();
 	assert cabine.porteOuverte;
