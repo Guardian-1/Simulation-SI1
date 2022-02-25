@@ -33,18 +33,18 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		    assert false : "else impossible";
 		};	
 	    } else {
-			c.changerIntention(p.sens());
 			//echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
 
 		};
 	} else {
-		if (c.etage != etage){
-		 echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
+		this.etage.ajouter(p);
+		if (c.etage == etage&&c.intention()=='-'){
+		 echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		}
-		if (!c.porteOuverte && c.etage == etage)
-			echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
-		c.changerIntention(p.sens());
-		char fff = c.faireMonterPassager(p);
+		//if (!c.porteOuverte && c.etage == etage)
+		//	echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+		//c.changerIntention(p.sens());
+		//char fff = c.faireMonterPassager(p);
 
 	}
 	date+=etage.arriveeSuivante();
