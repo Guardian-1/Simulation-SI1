@@ -22,7 +22,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 	Passager p = new Passager(date, etage, immeuble);
 	Cabine c = immeuble.cabine;
 	//echeancier.ajouter(new EvenementArriveePassagerPalier(date,etage));
-	etage.ajouter(p);
+
 	if (c.porteOuverte && c.etage == etage) {
 	    if (c.intention() == '-') {
 		c.changerIntention(p.sens());
@@ -42,6 +42,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		 echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
 		}
 		if (!c.porteOuverte && c.etage == etage)
+			etage.ajouter(p);
 			echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 		c.changerIntention(p.sens());
 		char fff = c.faireMonterPassager(p);
