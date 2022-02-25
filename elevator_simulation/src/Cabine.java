@@ -123,7 +123,7 @@ public class Cabine extends Global {
 	}
 
 	public Boolean doitSarreter (Echeancier echeancier, long date){
-		if(this.intention()=='-'){
+		if(this.passagersVeulentDescendre()){
 			return true;
 		}
 		else return false;
