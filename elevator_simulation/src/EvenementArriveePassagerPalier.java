@@ -46,9 +46,9 @@ public class EvenementArriveePassagerPalier extends Evenement {
 			echeancier.ajouter(new EvenementOuverturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 		c.changerIntention(p.sens());
 		char fff = c.faireMonterPassager(p);
-
+		etage.ajouter(p);
 	}
-	etage.ajouter(p);
+
 	date+=etage.arriveeSuivante();
 	echeancier.ajouter(this);
 	assert c.intention() != '-' : "intention impossible";
