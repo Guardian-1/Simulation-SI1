@@ -120,8 +120,6 @@ public class Cabine extends Global {
 			echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage, this.etage.getImmeuble().etage(this.etage.numero()-1)));
 
 		}
-		Passager p = new Passager(date, etage, this.etage.getImmeuble());
-		this.changerIntention(p.sens());
 	}
 
 	public Boolean doitSarreter (Echeancier echeancier, long date){
