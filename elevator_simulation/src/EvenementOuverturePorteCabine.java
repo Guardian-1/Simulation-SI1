@@ -16,7 +16,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 	Etage etage = cabine.etage;
 	assert ! cabine.porteOuverte;
 	
-	notYetImplemented();
+	cabine.faireDescendrePassagers(immeuble,date);
 	
 	assert cabine.porteOuverte;
     }
