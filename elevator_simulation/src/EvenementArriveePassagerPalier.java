@@ -44,8 +44,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		}
 		if (c.etage != etage)
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
-			echeancier.ajouter(new EvenementPassageCabinePalier(date+tempsPourOuvrirOuFermerLesPortes,p.etageDestination()));
-		c.changerIntention(p.sens());
+			c.changerIntention(p.sens());
 		//char fff = c.faireMonterPassager(p);
 
 	}
