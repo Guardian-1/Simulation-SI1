@@ -1,3 +1,5 @@
+import javax.lang.model.element.Element;
+
 public class Cabine extends Global {
 	/* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les méthodes, mais vous ne
        pouvez pas ajouter des attributs (variables d'instance).
@@ -122,11 +124,13 @@ public class Cabine extends Global {
 		}
 	}
 
-	public Boolean doitSarreter (Echeancier echeancier, long date){
+	public Boolean doitSarreter (Echeancier echeancier, long date, Immeuble immeuble){
 		if(this.passagersVeulentDescendre()){
 			return true;
+		} else if(immeuble.etageADesPassage(etage.numero())){
+			return true;
 		}
-		else return false;
+		return false;
 	}
 
 	public void ouvrirPorte() {

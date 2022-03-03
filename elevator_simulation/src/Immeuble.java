@@ -119,6 +119,11 @@ public class Immeuble extends Global {
     	return false;
     }
     
+    
+    public boolean etageADesPassage(int i) {
+    	return tableauDesEtages[i].aDesPassagers();
+    }
+    
     public boolean passagerEnDessous(Etage e){
     	assert e != null;
     	for (int i = etageLePlusBas().numero() ; i < e.numero() ; i++) {
