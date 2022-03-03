@@ -80,5 +80,8 @@ public class Echeancier extends Global {
 	    }
 	}	
     }
+	public void supprimerDernierEvent(){
+		listeEvenements.removeLast();
+	}
 
 }
