@@ -20,10 +20,6 @@ public class EvenementFermeturePorteCabine extends Evenement {
     Etage e = cabine.etage;
 
     cabine.porteOuverte = false;
-    if (e.aDesPassagersQuiDescendent())
-        cabine.changerIntention('v');
-    else if (e.aDesPassagersQuiMontent())
-        cabine.changerIntention('^');
     //int etageNum = cabine.etage.numero();
 
     cabine.changerEtage(echeancier,date);
