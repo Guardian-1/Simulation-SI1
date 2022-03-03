@@ -43,7 +43,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		 c.changerIntention(p.sens());
 		}
 		if (c.etage != etage)
-			if (etage.numero()>c.etage.numero())
+			if (etage.numero()>c.etage.numero()&&c.intention()=='-')
 			c.changerIntention('^');
 			else c.changerIntention('v');
 			if (c.porteOuverte)
