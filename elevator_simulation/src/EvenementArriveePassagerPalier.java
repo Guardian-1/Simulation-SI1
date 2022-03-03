@@ -46,7 +46,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 			if (etage.numero()>c.etage.numero())
 			c.changerIntention('^');
 			else c.changerIntention('v');
-			echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+			//echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 			echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
 		//char fff = c.faireMonterPassager(p);
