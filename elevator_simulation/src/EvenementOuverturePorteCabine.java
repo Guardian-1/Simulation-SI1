@@ -25,7 +25,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 				cabine.faireMonterPassager(etage.getPassagers().get(i));
 				etage.getPassagers().remove(i);
 			}
-			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes+tempsPourEntrerOuSortirDeLaCabine));
 		}
 	}
 }
