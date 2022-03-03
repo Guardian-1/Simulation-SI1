@@ -24,6 +24,7 @@ public class EvenementPassageCabinePalier extends Evenement {
 		if (cabine.doitSarreter(echeancier,date)){
 		echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 	}else{
+		System.out.println("TEST");
 		cabine.changerEtage(echeancier,date);
 	}
     }
