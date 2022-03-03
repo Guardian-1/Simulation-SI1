@@ -24,7 +24,6 @@ public class EvenementFermeturePorteCabine extends Evenement {
         cabine.changerIntention('v');
     else if (e.aDesPassagersQuiMontent())
         cabine.changerIntention('^');
-    else cabine.changerIntention('-');
     //int etageNum = cabine.etage.numero();
 
     cabine.changerEtage(echeancier,date);
