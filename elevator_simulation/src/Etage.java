@@ -33,7 +33,11 @@ public class Etage extends Global {
        Comme toute les collections, il ne faut pas l'exporter.
     */
 
-    public Etage(int n, int fa, Immeuble im) {
+	public ArrayList<Passager> getPassagers() {
+		return passagers;
+	}
+
+	public Etage(int n, int fa, Immeuble im) {
 	numero = n;
 	immeuble = im;
 	int germe = n << 2;
