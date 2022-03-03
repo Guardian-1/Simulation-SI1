@@ -20,10 +20,12 @@ public class EvenementOuverturePorteCabine extends Evenement {
 		cabine.faireDescendrePassagers(immeuble, date);
 		cabine.ouvrirPorte();
 		assert cabine.porteOuverte;
-		for (int i = 0; i < etage.getPassagers().size(); i++) {
-			cabine.faireMonterPassager(etage.getPassagers().get(i));
-			etage.getPassagers().remove(i);
+		if (etage.aDesPassagers()) {
+			for (int i = 0; i < etage.getPassagers().size(); i++) {
+				cabine.faireMonterPassager(etage.getPassagers().get(i));
+				etage.getPassagers().remove(i);
+			}
+			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		}
-		echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 	}
 }
