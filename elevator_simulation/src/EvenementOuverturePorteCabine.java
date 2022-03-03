@@ -22,6 +22,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 		assert cabine.porteOuverte;
 		for (int i = 0; i < etage.getPassagers().size(); i++) {
 			cabine.faireMonterPassager(etage.getPassagers().get(i));
+			etage.getPassagers().remove(i);
 		}
 	}
 }
