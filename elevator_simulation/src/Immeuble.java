@@ -123,7 +123,7 @@ public class Immeuble extends Global {
     public boolean etageADesPassage(int numero) {
     	for(int i = 0; i< tableauDesEtages.length; i ++) {
     		if(numero == tableauDesEtages[i].numero()) {
-    			return true;
+    			return tableauDesEtages[i].aDesPassagers();
     		}
     	}
     	return false ;
