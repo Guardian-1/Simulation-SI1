@@ -25,7 +25,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 				cabine.changerIntention('v');
 			else if (etage.aDesPassagersQuiMontent())
 				cabine.changerIntention('^');
-			for (int i = 0; i < etage.getPassagers().size(); i++) {
+			for (int i = 0; i < etage.getPassagers().size()+1; i++) {
 				cabine.faireMonterPassager(etage.getPassagers().get(i));
 				etage.getPassagers().remove(i);
 			}
