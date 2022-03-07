@@ -26,13 +26,13 @@ public class EvenementOuverturePorteCabine extends Evenement {
 			else if (etage.aDesPassagersQuiMontent())
 				cabine.changerIntention('^');
 			for (int i = 0; i < etage.getPassagers().size(); i++) {
-				cabine.faireMonterPassager(etage.getPassagers().get(i));
+				if (cabine.faireMonterPassager(etage.getPassagers().get(i))=='O')
 				etage.getPassagers().remove(i);
 			}
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
 			echeancier.supprimerDernierEvent();
 		}
-		if (cabine.porteOuverte&& cabine.isEmpty()&cabine.intention()=='-') {
+		if (cabine.porteOuverte&& cabine.isEmpty()&&cabine.intention()=='-') {
 			if (immeuble.passagerEnDessous(etage)) {
 				cabine.changerIntention('v');
 				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
