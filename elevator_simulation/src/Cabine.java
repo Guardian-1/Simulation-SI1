@@ -140,4 +140,10 @@ public class Cabine extends Global {
 	public void fermerPorte() {
 		porteOuverte =false;
 	}
+
+	public boolean isEmpty(){
+		if (this.tableauPassager[0]==null)
+			return true;
+		else return false;
+	}
 }
