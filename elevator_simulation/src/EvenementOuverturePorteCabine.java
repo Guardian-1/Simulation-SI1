@@ -32,7 +32,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
 			echeancier.supprimerDernierEvent();
 		}
-		if (cabine.passagersVeulentDescendre() || cabine.intention() == '-') {
+		if (cabine.passagersVeulentDescendre()) {
 			if (immeuble.passagerEnDessous(etage))
 				cabine.changerIntention('v');
 			else if (immeuble.passagerAuDessus(etage))
