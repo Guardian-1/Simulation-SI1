@@ -33,6 +33,10 @@ public class EvenementOuverturePorteCabine extends Evenement {
 			echeancier.supprimerDernierEvent();
 		}
 		if (cabine.passagersVeulentDescendre())
+			if (immeuble.passagerEnDessous(etage))
+				cabine.changerIntention('v');
+			else if (immeuble.passagerAuDessus(etage))
+				cabine.changerIntention('v');
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes+tempsPourEntrerOuSortirDeLaCabine));
 	}
 }
