@@ -17,7 +17,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 
 		assert !cabine.porteOuverte;
 		cabine.changerIntention('-');
-		cabine.faireDescendrePassagers(immeuble, date);
+
 		cabine.ouvrirPorte();
 		assert cabine.porteOuverte;
 		if (etage.aDesPassagers()) {
@@ -33,6 +33,7 @@ public class EvenementOuverturePorteCabine extends Evenement {
 			echeancier.supprimerDernierEvent();
 		}
 		if (cabine.passagersVeulentDescendre()) {
+			cabine.faireDescendrePassagers(immeuble, date);
 			if (immeuble.passagerEnDessous(etage))
 				cabine.changerIntention('v');
 			else if (immeuble.passagerAuDessus(etage))
