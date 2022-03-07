@@ -29,14 +29,15 @@ public class EvenementOuverturePorteCabine extends Evenement {
 				cabine.faireMonterPassager(etage.getPassagers().get(i));
 				etage.getPassagers().remove(i);
 			}
-			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes+tempsPourEntrerOuSortirDeLaCabine));
+			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
 			echeancier.supprimerDernierEvent();
 		}
-		if (cabine.passagersVeulentDescendre())
+		if (cabine.passagersVeulentDescendre()) {
 			if (immeuble.passagerEnDessous(etage))
 				cabine.changerIntention('v');
 			else if (immeuble.passagerAuDessus(etage))
-				cabine.changerIntention('v');
+				cabine.changerIntention('^');
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes+tempsPourEntrerOuSortirDeLaCabine));
+		}
 	}
 }
