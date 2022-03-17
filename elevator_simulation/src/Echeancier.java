@@ -84,4 +84,9 @@ public class Echeancier extends Global {
 		listeEvenements.removeLast();
 	}
 
+	public void removePAP(Passager p){
+
+
+	}
+
 }
