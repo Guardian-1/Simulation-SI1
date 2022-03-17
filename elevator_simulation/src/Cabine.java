@@ -153,9 +153,7 @@ public class Cabine extends Global {
 				this.changerIntention('v');
 			else if (etage.aDesPassagersQuiMontent())
 				this.changerIntention('^');
-			else this.changerIntention('-');
-	}
-		if (this.porteOuverte&& this.isEmpty()&&this.intention()=='-') {
+	}else if (this.porteOuverte&& this.isEmpty()&&this.intention()=='-') {
 			if (immeuble.passagerEnDessous(etage)) {
 				this.changerIntention('v');
 				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
@@ -165,6 +163,7 @@ public class Cabine extends Global {
 				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
 			}else this.changerIntention('-');
 		}
+		else this.changerIntention('-');
 	}
 }
 
