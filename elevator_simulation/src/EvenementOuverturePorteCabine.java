@@ -14,33 +14,18 @@ public class EvenementOuverturePorteCabine extends Evenement {
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 		Cabine cabine = immeuble.cabine;
 		Etage etage = cabine.etage;
-
+		int c = 0;
 		assert !cabine.porteOuverte;
-		cabine.changerIntention('-');
-		cabine.faireDescendrePassagers(immeuble, date);
+		//cabine.changerIntention('-');
+		c = cabine.faireDescendrePassagers(immeuble, date);
 		cabine.ouvrirPorte();
+		cabine.recalculerIntention();
+		c = c + etage.faireEntrerPassager();
+		if (cabine.intention != '-') {
+		    echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + (c * tempsPourEntrerOuSortirDeLaCabine)));
+                };
 		assert cabine.porteOuverte;
-		if (etage.aDesPassagers()) {
-			if (etage.aDesPassagersQuiDescendent())
-				cabine.changerIntention('v');
-			else if (etage.aDesPassagersQuiMontent())
-				cabine.changerIntention('^');
-			for (int i = 0; i < etage.getPassagers().size(); i++) {
-				if (cabine.faireMonterPassager(etage.getPassagers().get(i))=='O')
-				etage.getPassagers().remove(i);
-			}
-			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			echeancier.supprimerDernierEvent();
-		}
-		if (cabine.porteOuverte&& cabine.isEmpty()&&cabine.intention()=='-') {
-			if (immeuble.passagerEnDessous(etage)) {
-				cabine.changerIntention('v');
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			}
-			else if (immeuble.passagerAuDessus(etage)) {
-				cabine.changerIntention('^');
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			}
-		}
+
+	
 	}
 }
