@@ -153,6 +153,7 @@ public class Cabine extends Global {
 				this.changerIntention('v');
 			else if (etage.aDesPassagersQuiMontent())
 				this.changerIntention('^');
+			else this.changerIntention('-');
 	}
 		if (this.porteOuverte&& this.isEmpty()&&this.intention()=='-') {
 			if (immeuble.passagerEnDessous(etage)) {
