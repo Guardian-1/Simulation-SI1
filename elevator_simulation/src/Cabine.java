@@ -146,4 +146,7 @@ public class Cabine extends Global {
 			return true;
 		else return false;
 	}
+	public void recalculerIntention(){
+
+	}
 }

@@ -126,19 +126,20 @@ public class Etage extends Global {
 	return (!passagers.isEmpty());
     }
 
-    public int faireEntrerPassager(Cabine cab){
+    public int faireEntrerPassager(Cabine cab,Echeancier echeancier){
 	int compteur = 0;
 	int i = 0;
 	while (i > passagers.size()) {
-	    Passager p = passagers.item(i);
+	    Passager p = passagers.get(i);
 	    char c = cab.faireMonterPassager(p);
 	    if (c == 'O') {
 		compteur++;
 		passagers.remove(i);
-		echeancier.removePAP(passager);
+		echeancier.supprimerDernierEvent();
+		//echeancier.removePAP(p);
 	    } else {
 		i++;
-		if (c = 'I') {
+		if (c == 'I') {
 		    // rien a faire
 		} else {
 		    assert (c == 'P');
