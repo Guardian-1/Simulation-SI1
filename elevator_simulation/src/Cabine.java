@@ -162,7 +162,7 @@ public class Cabine extends Global {
 			else if (immeuble.passagerAuDessus(etage)) {
 				this.changerIntention('^');
 				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			}
+			}else this.changerIntention('-');
 		}
 	}
 }
