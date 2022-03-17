@@ -129,7 +129,7 @@ public class Etage extends Global {
     public int faireEntrerPassager(Cabine cab,Echeancier echeancier){
 	int compteur = 0;
 	int i = 0;
-	while (i > passagers.size()) {
+	while (i < passagers.size()) {
 	    Passager p = passagers.get(i);
 	    char c = cab.faireMonterPassager(p);
 	    if (c == 'O') {
