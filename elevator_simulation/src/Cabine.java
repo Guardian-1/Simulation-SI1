@@ -147,6 +147,11 @@ public class Cabine extends Global {
 		else return false;
 	}
 	public void recalculerIntention(){
-
+		if (etage.aDesPassagers()) {
+			if (etage.aDesPassagersQuiDescendent())
+				this.changerIntention('v');
+			else if (etage.aDesPassagersQuiMontent())
+				this.changerIntention('^');
 	}
+}
 }
