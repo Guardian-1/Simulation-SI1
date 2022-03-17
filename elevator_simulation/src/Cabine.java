@@ -156,12 +156,9 @@ public class Cabine extends Global {
 	}else if (this.porteOuverte&& this.isEmpty()) {
 			if (immeuble.passagerEnDessous(etage)) {
 				this.changerIntention('v');
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			}
-			else if (immeuble.passagerAuDessus(etage)) {
+				}else if (immeuble.passagerAuDessus(etage)) {
 				this.changerIntention('^');
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
-			}else this.changerIntention('-');
+					}else this.changerIntention('-');
 		}else this.changerIntention('-');
 	}
 }
