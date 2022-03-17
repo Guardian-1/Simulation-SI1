@@ -1,4 +1,5 @@
 import javax.lang.model.element.Element;
+import java.util.Date;
 
 public class Cabine extends Global {
 	/* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les méthodes, mais vous ne
@@ -146,12 +147,23 @@ public class Cabine extends Global {
 			return true;
 		else return false;
 	}
-	public void recalculerIntention(){
+	public void recalculerIntention(Echeancier echeancier,Immeuble immeuble,long date){
 		if (etage.aDesPassagers()) {
 			if (etage.aDesPassagersQuiDescendent())
 				this.changerIntention('v');
 			else if (etage.aDesPassagersQuiMontent())
 				this.changerIntention('^');
 	}
+		if (this.porteOuverte&& this.isEmpty()&&this.intention()=='-') {
+			if (immeuble.passagerEnDessous(etage)) {
+				this.changerIntention('v');
+				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
+			}
+			else if (immeuble.passagerAuDessus(etage)) {
+				this.changerIntention('^');
+				echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + tempsPourEntrerOuSortirDeLaCabine));
+			}
+		}
+	}
 }
-}
+
