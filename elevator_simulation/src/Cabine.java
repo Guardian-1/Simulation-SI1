@@ -147,7 +147,57 @@ public class Cabine extends Global {
 			return true;
 		else return false;
 	}
+	
+	
 	public void recalculerIntention(Echeancier echeancier,Immeuble immeuble,long date){
+		assert (this.intention!='-');
+		switch (intention) {
+		case '^':
+			if(immeuble.etageLePlusHaut().numero()==etage.numero()) {
+				assert(!etage.aDesPassagersQuiMontent());
+			}
+			
+			if (immeuble.passagerAuDessus(etage)) {
+				return;
+			}
+			
+			if(etage.aDesPassagersQuiMontent()) {
+				return;
+			}
+			
+			if (etage.aDesPassagersQuiDescendent()) {
+				changerIntention('v');
+			}
+			
+			
+			break;
+		case 'v':
+			if(immeuble.etageLePlusBas().numero()==etage.numero()) {
+				assert(!etage.aDesPassagersQuiDescendent());
+			}
+			
+			if (immeuble.passagerEnDessous(etage)) {
+				return;
+			}
+			
+			if(etage.aDesPassagersQuiDescendent()) {
+				return;
+			}
+			
+			if(etage.aDesPassagersQuiMontent()) {
+				changerIntention('^');
+			}
+			
+			break;	
+			
+		}
+		
+		if(immeuble.immeubleVide()) {
+			changerIntention('-');
+		}
+	}
+	
+	public void recalculerIntentionV1(Echeancier echeancier,Immeuble immeuble,long date){
 		assert (this.intention!='-');
 		if (intention=='^'&&immeuble.etageLePlusHaut().numero()>etage.numero()) {
 			if (etage.aDesPassagersQuiMontent()) {
