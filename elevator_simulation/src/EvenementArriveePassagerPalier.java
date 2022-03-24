@@ -42,17 +42,17 @@ public class EvenementArriveePassagerPalier extends Evenement {
 
         };
     } else {
-
+        this.etage.ajouter(p);
         if (c.etage != etage)
             if (c.intention()=='-') {
                 if (etage.numero() > c.etage.numero())
                     c.changerIntention('^');
                 else c.changerIntention('v');
             }
-            if (immeuble.immeubleVide() || c.isEmpty() && c.porteOuverte)
+            if (!immeuble.passagerAuDessus(etage) || !c.isEmpty() || !immeuble.passagerEnDessous(etage) && c.porteOuverte)
             echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
-            this.etage.ajouter(p);
             echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
+
         //char fff = c.faireMonterPassager(p);
 
     }
