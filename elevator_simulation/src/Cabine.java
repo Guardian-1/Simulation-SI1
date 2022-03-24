@@ -177,7 +177,7 @@ public class Cabine extends Global {
 			break;
 		case 'v':
 			if(immeuble.etageLePlusBas().numero()==etage.numero()) {
-				assert(!etage.aDesPassagersQuiDescendent());
+				changerIntention('^');
 			}
 			
 			if (immeuble.passagerEnDessous(etage)) {
