@@ -25,7 +25,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 	if (c.porteOuverte && c.etage == etage) {
 	    if (c.intention() == '-') {
 		c.changerIntention(p.sens());
-		echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+//		echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		char fmp = c.faireMonterPassager(p);
 		if (fmp == 'O') {
 		    assert true;
@@ -38,10 +38,6 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		};
 	} else {
 		this.etage.ajouter(p);
-		if (c.etage == etage&&c.intention()=='-'){
-//		 echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
-//		 c.changerIntention(p.sens());
-		}
 		if (c.etage != etage)
 			if (c.intention()=='-') {
 				if (etage.numero() > c.etage.numero())
