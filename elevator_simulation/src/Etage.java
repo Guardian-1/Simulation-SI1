@@ -135,8 +135,7 @@ public class Etage extends Global {
 	    if (c == 'O') {
 		compteur++;
 		passagers.remove(i);
-		echeancier.supprimerDernierEvent();
-		//echeancier.removePAP(p);
+		echeancier.removePAP(p);
 	    } else {
 		i++;
 		if (c == 'I') {

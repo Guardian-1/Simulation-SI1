@@ -4,7 +4,7 @@ public class EvenementPietonArrivePalier extends Evenement {
     */
 
     private Etage etage;
-    private Passager passager;
+    public Passager passager;
 
     public void afficheDetails(StringBuilder buffer, Immeuble immeuble) {
       buffer.append("PAP ");
