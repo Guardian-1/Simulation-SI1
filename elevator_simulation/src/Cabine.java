@@ -149,18 +149,22 @@ public class Cabine extends Global {
 	}
 	public void recalculerIntention(Echeancier echeancier,Immeuble immeuble,long date){
 		assert (this.intention!='-');
-		if (etage.aDesPassagers()) {
-			if (etage.aDesPassagersQuiDescendent())
-				this.changerIntention('v');
-			else if (etage.aDesPassagersQuiMontent())
-				this.changerIntention('^');
-	}else if (this.porteOuverte&& this.isEmpty()) {
-			if (immeuble.passagerEnDessous(etage)) {
-				this.changerIntention('v');
-				}else if (immeuble.passagerAuDessus(etage)) {
-				this.changerIntention('^');
-					}else this.changerIntention('-');
-		}else this.changerIntention('-');
+		if (intention=='^') {
+			if (etage.aDesPassagersQuiMontent()) {
+				return;
+			} else if (immeuble.passagerAuDessus(etage)) {
+				return;
+			} else if (etage.aDesPassagersQuiDescendent() || immeuble.passagerEnDessous(etage)) {
+				changerIntention('v');
+			}else changerIntention('-');
+		}else {
+			if (etage.aDesPassagersQuiDescendent()) return;
+		 else if (immeuble.passagerEnDessous(etage)) {
+			return;
+		} else if (etage.aDesPassagersQuiMontent() || immeuble.passagerAuDessus(etage)) {
+		changerIntention('^');
+		}else changerIntention('-');
+		}
 	}
 }
 
