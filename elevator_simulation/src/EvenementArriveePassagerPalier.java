@@ -18,10 +18,11 @@ public class EvenementArriveePassagerPalier extends Evenement {
 
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	assert etage != null;
+	
 	assert immeuble.etage(etage.numero()) == etage;
 	Passager p = new Passager(date, etage, immeuble);
 	Cabine c = immeuble.cabine;
-
+	assert (c.porteOuverte);
 	if (c.porteOuverte && c.etage == etage) {
 	    if (c.intention() == '-') {
 		c.changerIntention(p.sens());
