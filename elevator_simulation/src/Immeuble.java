@@ -22,6 +22,13 @@ public class Immeuble extends Global {
         return res ;
     }
 
+    public boolean immeubleVide() {
+    	for (int i = 0; i < tableauDesEtages.length; i++) {
+    		if(tableauDesEtages[i].aDesPassagers()) return false;
+    	}
+    	return true;
+    }
+    
     public Etage etageLePlusHaut() {
 	Etage res = tableauDesEtages[tableauDesEtages.length - 1];
         assert res != null;
