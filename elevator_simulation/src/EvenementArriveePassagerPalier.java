@@ -40,7 +40,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 		this.etage.ajouter(p);
 		if (c.etage == etage&&c.intention()=='-'){
 //		 echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
-		 c.changerIntention(p.sens());
+//		 c.changerIntention(p.sens());
 		}
 		if (c.etage != etage)
 			if (c.intention()=='-') {
