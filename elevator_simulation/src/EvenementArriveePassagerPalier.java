@@ -17,19 +17,46 @@ public class EvenementArriveePassagerPalier extends Evenement {
     }
 
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
-	assert etage != null;
-	
-	assert immeuble.etage(etage.numero()) == etage;
-	Passager p = new Passager(date, etage, immeuble);
-	Cabine c = immeuble.cabine;
+    assert etage != null;
+    
+    assert immeuble.etage(etage.numero()) == etage;
+    Passager p = new Passager(date, etage, immeuble);
+    Cabine c = immeuble.cabine;
+    if (c.porteOuverte && c.etage == etage) {
+        if (c.intention() == '-') {
+        c.changerIntention(p.sens());
+        if(c.porteOuverte) {
+            echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+        }        
+        char fmp = c.faireMonterPassager(p);
+        if (fmp == 'O') {
+            assert true;
+        } else {
+            assert false : "else impossible";
+        };    
+        } else {
+            //echeancier.ajouter(new EvenementPassageCabinePalier(date + tempsPourBougerLaCabineDUnEtage,p.etageDestination()));
 
-	this.etage.ajouter(p);
-	c.recalculerIntention(echeancier, immeuble, date);
-	c.changerEtage(echeancier, date);
+        };
+    } else {
+        this.etage.ajouter(p);
+        if (c.etage != etage)
+            if (c.intention()=='-') {
+                if (etage.numero() > c.etage.numero())
+                    c.changerIntention('^');
+                else c.changerIntention('v');
+            }
+            if (c.porteOuverte)
+            echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+            echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
-	date+=etage.arriveeSuivante();
-	echeancier.ajouter(this);
-	assert c.intention() != '-' : "intention impossible";
+        //char fff = c.faireMonterPassager(p);
+
+    }
+
+    date+=etage.arriveeSuivante();
+    echeancier.ajouter(this);
+    assert c.intention() != '-' : "intention impossible";
     }
 
 }
