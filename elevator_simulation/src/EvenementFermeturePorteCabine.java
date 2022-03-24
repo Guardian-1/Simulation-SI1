@@ -17,11 +17,9 @@ public class EvenementFermeturePorteCabine extends Evenement {
     public void traiter(Immeuble immeuble, Echeancier echeancier) {
 	Cabine cabine = immeuble.cabine;
 	assert cabine.porteOuverte : "précondition";
-    Etage e = cabine.etage;
-
-    cabine.porteOuverte = false;
+    //Etage e = cabine.etage;
+    cabine.fermerPorte();
     //int etageNum = cabine.etage.numero();
-
     cabine.changerEtage(echeancier,date);
 
     assert (! cabine.porteOuverte) : "postcondition";
