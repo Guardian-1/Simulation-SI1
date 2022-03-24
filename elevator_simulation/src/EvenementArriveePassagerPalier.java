@@ -24,6 +24,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 	Cabine c = immeuble.cabine;
 
 	this.etage.ajouter(p);
+	c.recalculerIntention(echeancier, immeuble, date);
 	c.changerEtage(echeancier, date);
 
 	date+=etage.arriveeSuivante();
