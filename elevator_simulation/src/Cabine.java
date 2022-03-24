@@ -169,6 +169,10 @@ public class Cabine extends Global {
 				changerIntention('v');
 			}
 			
+			if (immeuble.passagerEnDessous(etage)) {
+				changerIntention('v');
+			}
+			
 			
 			break;
 		case 'v':
@@ -185,6 +189,10 @@ public class Cabine extends Global {
 			}
 			
 			if(etage.aDesPassagersQuiMontent()) {
+				changerIntention('^');
+			}
+			
+			if (immeuble.passagerAuDessus(etage)) {
 				changerIntention('^');
 			}
 			
