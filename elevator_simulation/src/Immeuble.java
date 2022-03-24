@@ -1,6 +1,3 @@
-import java.security.DrbgParameters.Reseed;
-import java.util.Iterator;
-
 public class Immeuble extends Global {
     /* Dans cette classe, vous pouvez ajouter/enlever/modifier/corriger les methodes, mais vous ne
        pouvez pas ajouter des attributs (variables d'instance).
@@ -23,13 +20,6 @@ public class Immeuble extends Global {
 	Etage res = tableauDesEtages[0];
         assert res != null;
         return res ;
-    }
-    
-    public boolean immeubleVide() {
-    	for (int i = 0; i < tableauDesEtages.length; i++) {
-    		if(tableauDesEtages[i].aDesPassagers()) return false;
-    	}
-    	return true;
     }
 
     public Etage etageLePlusHaut() {

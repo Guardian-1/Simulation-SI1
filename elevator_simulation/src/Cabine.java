@@ -147,10 +147,6 @@ public class Cabine extends Global {
 			return true;
 		else return false;
 	}
-	
-	
-	
-	// Version 1
 	public void recalculerIntention(Echeancier echeancier,Immeuble immeuble,long date){
 		assert (this.intention!='-');
 		if (intention=='^'&&immeuble.etageLePlusHaut().numero()>etage.numero()) {
