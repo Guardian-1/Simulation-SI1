@@ -191,7 +191,7 @@ public class Cabine extends Global {
 			break;	
 			
 		}
-		
+		//
 		if(immeuble.immeubleVide()) {
 			changerIntention('-');
 		}
