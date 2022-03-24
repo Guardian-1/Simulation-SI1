@@ -50,7 +50,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 					else c.changerIntention('v');
 				}
 			}
-			if (c.porteOuverte && !immeuble.immeubleVide() && !c.isEmpty())
+			if (c.porteOuverte && !immeuble.immeubleVide() && !c.isEmpty() && !etage.aDesPassagers())
 				echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 			echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
