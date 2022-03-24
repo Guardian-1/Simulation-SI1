@@ -39,7 +39,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 	} else {
 		this.etage.ajouter(p);
 		if (c.etage == etage&&c.intention()=='-'){
-		 echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+//		 echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
 		 c.changerIntention(p.sens());
 		}
 		if (c.etage != etage)
@@ -49,7 +49,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 				else c.changerIntention('v');
 			}
 			if (c.porteOuverte)
-//			echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+			echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
 			echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
 		//char fff = c.faireMonterPassager(p);
