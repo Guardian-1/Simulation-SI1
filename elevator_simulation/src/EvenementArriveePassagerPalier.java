@@ -22,6 +22,11 @@ public class EvenementArriveePassagerPalier extends Evenement {
     assert immeuble.etage(etage.numero()) == etage;
     Passager p = new Passager(date, etage, immeuble);
     Cabine c = immeuble.cabine;
+    
+    if(!c.porteOuverte && c.etage == etage) {
+    	echeancier.ajouter(new EvenementOuverturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+    }
+    
     if (c.porteOuverte && c.etage == etage) {
         if (c.intention() == '-') {
         c.changerIntention(p.sens());
