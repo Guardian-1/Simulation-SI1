@@ -200,7 +200,7 @@ public class Cabine extends Global {
 			
 		}
 		//
-		if(immeuble.immeubleVide()) {
+		if(immeuble.immeubleVide() && this.isEmpty()) {
 			changerIntention('-');
 		}
 	}
