@@ -128,17 +128,17 @@ public class Cabine extends Global {
 	public Boolean doitSarreter (Echeancier echeancier, long date, Immeuble immeuble){
 		if(this.passagersVeulentDescendre()){
 			return true;
-		} 
-		
-		switch (this.intention) {
-		case '^': 
-			if(etage.aDesPassagersQuiMontent())
-				return true;
-			break;
-		case 'v':
-			if(etage.aDesPassagersQuiDescendent())
-				return true;
-			break;
+		} else if(immeuble.etageADesPassage(etage.numero())){
+			switch (this.intention) {
+			case '^': 
+				if(etage.aDesPassagersQuiMontent())
+					return true;
+				break;
+			case 'v':
+				if(etage.aDesPassagersQuiDescendent())
+					return true;
+				break;
+			}
 		}
 		return false;
 	}
