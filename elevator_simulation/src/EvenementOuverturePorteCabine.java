@@ -20,9 +20,16 @@ public class EvenementOuverturePorteCabine extends Evenement {
 		c = cabine.faireDescendrePassagers(immeuble, date);
 		cabine.ouvrirPorte();
 		cabine.recalculerIntention(echeancier,immeuble,date);
-		if((etage.aDesPassagersQuiDescendent() && cabine.intention() == 'v') || (etage.aDesPassagersQuiMontent() && cabine.intention() == '^')) {
+		if(modeParfait) {
+			if((etage.aDesPassagersQuiDescendent() && cabine.intention() == 'v') || (etage.aDesPassagersQuiMontent() && cabine.intention() == '^')) {
+				c = c + etage.faireEntrerPassager(cabine,echeancier);
+			}
+		} else {
 			c = c + etage.faireEntrerPassager(cabine,echeancier);
 		}
+			
+		
+
 		
 		if (!immeuble.immeubleVide() || !cabine.isEmpty() && cabine.porteOuverte) {
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + (c * tempsPourEntrerOuSortirDeLaCabine)));
