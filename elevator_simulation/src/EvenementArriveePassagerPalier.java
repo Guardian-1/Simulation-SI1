@@ -50,8 +50,10 @@ public class EvenementArriveePassagerPalier extends Evenement {
 					else c.changerIntention('v');
 				}
 			}
-			if (c.porteOuverte && !immeuble.immeubleVide() && !c.etage.aDesPassagers() && c.isEmpty())
-				echeancier.ajouter(new EvenementFermeturePorteCabine(date+tempsPourOuvrirOuFermerLesPortes));
+			if (c.porteOuverte && !immeuble.immeubleVide() && !c.etage.aDesPassagers() && c.isEmpty()) {
+				if (!echeancier.presenceFPC())
+					echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes));
+			}
 			echeancier.ajouter(new EvenementPietonArrivePalier(date+delaiDePatienceAvantSportif,etage,p));
 
 			//char fff = c.faireMonterPassager(p);
