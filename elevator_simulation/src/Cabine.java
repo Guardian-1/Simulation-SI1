@@ -138,13 +138,13 @@ public class Cabine extends Global {
 			case '^': 
 				if(etage.aDesPassagersQuiMontent())
 					return true;
-				if(!immeuble.passagerAuDessus(etage)) 
+				if(!immeuble.passagerAuDessus(etage)&&this.isEmpty())
 					return true;								
 				break;
 			case 'v':
 				if(etage.aDesPassagersQuiDescendent())
 					return true;
-				if(!immeuble.passagerEnDessous(etage)) 
+				if(!immeuble.passagerEnDessous(etage)&&this.isEmpty())
 					return true;
 				break;
 			}
