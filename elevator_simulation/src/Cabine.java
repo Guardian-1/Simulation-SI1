@@ -128,8 +128,17 @@ public class Cabine extends Global {
 	public Boolean doitSarreter (Echeancier echeancier, long date, Immeuble immeuble){
 		if(this.passagersVeulentDescendre()){
 			return true;
-		} else if(immeuble.etageADesPassage(etage.numero())){
-			return true;
+		} 
+		
+		switch (this.intention) {
+		case '^': 
+			if(etage.aDesPassagersQuiMontent())
+				return true;
+			break;
+		case 'v':
+			if(etage.aDesPassagersQuiDescendent())
+				return true;
+			break;
 		}
 		return false;
 	}
@@ -137,7 +146,7 @@ public class Cabine extends Global {
 	public void ouvrirPorte() {
 		porteOuverte =true;
 	}
-	
+
 	public void fermerPorte() {
 		porteOuverte =false;
 	}
@@ -147,8 +156,8 @@ public class Cabine extends Global {
 			return true;
 		else return false;
 	}
-	
-	
+
+
 	public void recalculerIntention(Echeancier echeancier,Immeuble immeuble,long date){
 		assert (this.intention!='-');
 		switch (intention) {
@@ -156,87 +165,55 @@ public class Cabine extends Global {
 			if(immeuble.etageLePlusHaut().numero()==etage.numero()) {
 				changerIntention('v');
 			}
-			
+
 			if (immeuble.passagerAuDessus(etage)) {
 				return;
 			}
-			
+
 			if(etage.aDesPassagersQuiMontent()) {
 				return;
 			}
-			
+
 			if (etage.aDesPassagersQuiDescendent()) {
 				changerIntention('v');
 			}
-			
+
 			if (immeuble.passagerEnDessous(etage)) {
 				changerIntention('v');
 			}
-			
-			
+
+
 			break;
 		case 'v':
 			if(immeuble.etageLePlusBas().numero()==etage.numero()) {
 				changerIntention('^');
 			}
-			
+
 			if (immeuble.passagerEnDessous(etage)) {
 				return;
 			}
-			
+
 			if(etage.aDesPassagersQuiDescendent()) {
 				return;
 			}
-			
+
 			if(etage.aDesPassagersQuiMontent()) {
 				changerIntention('^');
 			}
-			
+
 			if (immeuble.passagerAuDessus(etage)) {
 				changerIntention('^');
 			}
-			
+
 			break;	
-			
+
 		}
 		//
 		if(immeuble.immeubleVide() && this.isEmpty()) {
 			changerIntention('-');
 		}
 	}
-	
-	public void recalculerIntentionV1(Echeancier echeancier,Immeuble immeuble,long date){
-		assert (this.intention!='-');
-		if (intention=='^'&&immeuble.etageLePlusHaut().numero()>etage.numero()) {
-			if (etage.aDesPassagersQuiMontent()) {
-				return;
-			} else if (immeuble.passagerAuDessus(etage)) {
-				return;
-			} else if (etage.aDesPassagersQuiDescendent() || immeuble.passagerEnDessous(etage)) {
-				changerIntention('v');
-			}else changerIntention('-');
-		}else if (intention=='v'&&immeuble.etageLePlusBas().numero()<etage.numero()){
-			if (etage.aDesPassagersQuiDescendent()) return;
-		 else if (immeuble.passagerEnDessous(etage)) {
-			return;
-		} else if (etage.aDesPassagersQuiMontent() || immeuble.passagerAuDessus(etage)) {
-		changerIntention('^');
-		}else changerIntention('-');
-		}
-		else if (intention=='v' && immeuble.etageLePlusBas().numero()==etage.numero()){
-			if (etage.aDesPassagersQuiMontent()){
-				changerIntention('^');
-			}else if (immeuble.passagerAuDessus(etage)){
-				changerIntention('^');
-			}else changerIntention('-');
-		}
-		else if (intention=='^' && immeuble.etageLePlusHaut().numero()==etage.numero()){
-		if (etage.aDesPassagersQuiDescendent()){
-			changerIntention('v');
-		}else if (immeuble.passagerEnDessous(etage)){
-			changerIntention('v');
-		}else changerIntention('-');
-	}
-	}
+
+
 }
 
