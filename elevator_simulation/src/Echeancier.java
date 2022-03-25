@@ -100,7 +100,7 @@ public class Echeancier extends Global {
 	}
 	public boolean presenceFPC(){
 		int index = 0;
-		while ( index<=this.listeEvenements.size() ) {
+		while ( index<this.listeEvenements.size() ) {
 			Evenement e = listeEvenements.get(index);
 			if(e instanceof EvenementFermeturePorteCabine) {
 				return true;
