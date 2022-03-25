@@ -20,7 +20,10 @@ public class EvenementOuverturePorteCabine extends Evenement {
 		c = cabine.faireDescendrePassagers(immeuble, date);
 		cabine.ouvrirPorte();
 		cabine.recalculerIntention(echeancier,immeuble,date);
-		c = c + etage.faireEntrerPassager(cabine,echeancier);
+		if((etage.aDesPassagersQuiDescendent() && cabine.intention() == 'v') || (etage.aDesPassagersQuiMontent() && cabine.intention() == '^')) {
+			c = c + etage.faireEntrerPassager(cabine,echeancier);
+		}
+		
 		if (!immeuble.immeubleVide() || !cabine.isEmpty() && cabine.porteOuverte) {
 			echeancier.ajouter(new EvenementFermeturePorteCabine(date + tempsPourOuvrirOuFermerLesPortes + (c * tempsPourEntrerOuSortirDeLaCabine)));
 		};
