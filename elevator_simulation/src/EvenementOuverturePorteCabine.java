@@ -21,7 +21,9 @@ public class EvenementOuverturePorteCabine extends Evenement {
 		cabine.ouvrirPorte();
 		cabine.recalculerIntention(echeancier,immeuble,date);
 		if(modeParfait) {
-			if((etage.aDesPassagersQuiDescendent() && cabine.intention() == 'v') || (etage.aDesPassagersQuiMontent() && cabine.intention() == '^')) {
+			if(etage.aDesPassagersQuiMontent() && cabine.intention() == '^') {
+				c = c + etage.faireEntrerPassager(cabine,echeancier);
+			} else if (etage.aDesPassagersQuiDescendent() && cabine.intention() == 'v') {
 				c = c + etage.faireEntrerPassager(cabine,echeancier);
 			}
 		} else {
