@@ -26,6 +26,7 @@ public class EvenementArriveePassagerPalier extends Evenement {
 
 
 		if (c.porteOuverte && c.etage == etage) {
+			c.recalculerIntention(echeancier, immeuble, date);
 			if (c.intention() == '-') {
 				c.changerIntention(p.sens());
 				if(c.porteOuverte) {
